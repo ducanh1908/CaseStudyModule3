@@ -36,8 +36,7 @@ create table if not exists Role
     name  varchar(50) not null
    
 );
-insert into Role(id, name) values(0,'admin'),(1,'user');
-select * from Role;
+
 create table if not exists UserRole
 (
     User_id int null,
@@ -205,3 +204,6 @@ insert into User(Username, PassWord,Address,Email,PhoneNumber)
 values ('Admin','admin','Ha Noi','admin@gmail.com','0966987909');
 insert into User(Username, PassWord,Address,Email,PhoneNumber)
 values ('user','123456','Ha Noi','user@gmail.com','0987890543');
+insert into Role(id, name) values(0,'admin'),(1,'user');
+
+insert into UserRole(User_id,Role_id) values(2,0);
