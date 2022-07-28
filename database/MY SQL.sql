@@ -36,8 +36,7 @@ create table if not exists Role
     name  varchar(50) not null
    
 );
-insert into Role(id, name) values(0,'admin'),(1,'user');
-select * from Role;
+
 create table if not exists UserRole
 (
     User_id int null,
@@ -162,3 +161,49 @@ create index Role_id
 
 create index User_id
     on UserRole (User_id);
+    insert into nhaxuatban(TenNXB)
+values	("Kim Dong"),
+		("Thanh Nien"),
+        ("Nha Nam"),
+        ("Nhan Dan"),
+        ("Phu Nu");
+        
+insert into TinhTrangSach(TinhTrang)
+values	("New"),
+		("Old");
+        
+insert into TheLoai(TenTheLoai)
+values	("Khoa Hoc"),
+		("Lich Su"),
+        ("Dia Ly"),
+        ("Van Hoc"),
+        ("Truyen XXX");
+        
+insert into Kho(TenKho, MoTa, SLDeSach, SLSachTrongKho)
+values	("Kho 1", "Mo ta 1", 5, 10),
+		("Kho 2", "Mo ta 2", 10, 20),
+        ("Kho 3", "Mo ta 3", 15, 30),
+        ("Kho 4", "Mo ta 4", 20, 40),
+		("Kho 5", "Mo ta 5", 25, 50);
+        
+insert into Sach(TenSach, MoTa, TinhTrang_id, TheLoai_id, NXB_id, Kho_id)
+values	("50 Sac Thai", "Mo ta 1", 1, 1, 1, 1),
+		("60 Sac Thai", "Mo ta 2", 1, 2, 2, 2),
+        ("70 Sac Thai", "Mo ta 3", 2, 3, 3, 3),
+        ("80 Sac Thai", "Mo ta 4", 2, 4, 4, 4),
+        ("90 Sac Thai", "Mo ta 5", 1, 5, 5, 5);
+
+insert into HoaDon(MaHD, NgayDatHang, NXB_id, Sach_id, SLDatHang)
+values 	(1, "2022-07-22", 1, 1, 10),
+		(2, "2022-07-23", 2, 2, 20),
+        (3, "2022-07-24", 3, 3, 30),
+        (4, "2022-07-25", 4, 4, 40),
+        (5, "2022-07-26", 5, 5, 50);
+
+insert into User(Username, PassWord,Address,Email,PhoneNumber)
+values ('Admin','admin','Ha Noi','admin@gmail.com','0966987909');
+insert into User(Username, PassWord,Address,Email,PhoneNumber)
+values ('user','123456','Ha Noi','user@gmail.com','0987890543');
+insert into Role(id, name) values(0,'admin'),(1,'user');
+
+insert into UserRole(User_id,Role_id) values(2,0);

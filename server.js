@@ -7,11 +7,13 @@ const qs = require('qs')
 
 const Usercontroller = require('./controller/user-controller')
 const ErrorController = require('./controller/error-contrller');
-const HomeController = require('./controller/home-controller')
+const HomeController = require('./controller/home-controller');
+const SearchController = require('./controller/search-controller')
 
 let errorController = new ErrorController();
 let userController = new Usercontroller();
 let homeController = new HomeController();
+let search = new SearchController();
 
 const mimeTypes = {
     "html": "text/html",
@@ -152,6 +154,15 @@ let server = http.createServer((req,res)=>{
             break;
         }
 
+        case '/search':{
+            if(method == 'GET'){
+                search.showSearch(req,res)
+            }
+            else {
+                search.findByCategory(req,res)
+            }
+            break;
+        }
         default: 
             const filesDefences = req.url.match(/\.js|\.css|\.png|\.jpg/);
             if (filesDefences) {
