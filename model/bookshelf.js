@@ -14,7 +14,7 @@ class Bookshelf {
 
   getBookshelfs() {
     return new Promise((resolve, reject) => {
-      this.connection.query("select * from kho", (err, data) => {
+      this.connection.query("select * from Kho", (err, data) => {
         if (err) {
           reject(err);
         } else {
@@ -25,7 +25,7 @@ class Bookshelf {
   }
 
   createBookshelf(bookshelf) {
-    let insertQuery = `insert into kho(TenKho, MoTa, SLDeSach, SLSachTrongKho)
+    let insertQuery = `insert into Kho(TenKho, MoTa, SLDeSach, SLSachTrongKho)
                            VALUES ('${bookshelf.name}', "${bookshelf.description}", '${bookshelf.number_of_titles}', '${bookshelf.number_of_books}')`;
     this.connection.query(insertQuery, (err, data) => {
       if (err) {
@@ -38,7 +38,7 @@ class Bookshelf {
 
   getBookshelf(id) {
     return new Promise((resolve, reject) => {
-      let query = `select * from kho where id = ${id}`;
+      let query = `select * from Kho where id = ${id}`;
       this.connection.query(query, (err, data) => {
         if (err) {
           reject(err);
@@ -51,7 +51,7 @@ class Bookshelf {
 
   updateBookshelf(id, bookshelf) {
     return new Promise((resolve, reject) => {
-      let query = `update kho set TenKho = '${bookshelf.name}', MoTa = '${bookshelf.description}', SLDeSach = '${bookshelf.number_of_titles}', SLSachTrongKho = '${bookshelf.number_of_books}'  where id = ${bookshelf.id}`;
+      let query = `update Kho set TenKho = '${bookshelf.name}', MoTa = '${bookshelf.description}', SLDeSach = '${bookshelf.number_of_titles}', SLSachTrongKho = '${bookshelf.number_of_books}'  where id = ${bookshelf.id}`;
       this.connection.query(query, (err, data) => {
         if (err) {
           reject(err);
@@ -63,7 +63,7 @@ class Bookshelf {
 
   deleteBookshelf(id) {
     return new Promise((resolve, reject) => {
-      let query = `delete from kho where id = ${id}`;
+      let query = `delete from Kho where id = ${id}`;
       this.connection.query(query, (err, data) => {
         if (err) {
           reject(err);

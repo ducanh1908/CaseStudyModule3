@@ -76,9 +76,8 @@ create table if not exists Sach
     constraint sach_ibfk_2
         foreign key (TheLoai_id) references TheLoai(id),
     constraint sach_ibfk_3
-        foreign key (NXB_id) references NhaXuatBan (id),
-    constraint sach_ibfk_4
-        foreign key (Kho_id) references Kho (id)
+        foreign key (NXB_id) references NhaXuatBan (id)
+
 );
 
 create table if not exists HoaDon
@@ -91,9 +90,8 @@ create table if not exists HoaDon
     Sach_id     int  null,
     SLDatHang   int  null,
     constraint hoadon_ibfk_1
-        foreign key (NXB_id) references NhaXuatBan (id),
-    constraint hoadon_ibfk_2
-        foreign key (Sach_id) references Sach (id)
+        foreign key (NXB_id) references NhaXuatBan (id)
+
 );
 
 create index NXB_id
@@ -205,3 +203,6 @@ insert into User(Username, PassWord,Address,Email,PhoneNumber)
 values ('Admin','admin','Ha Noi','admin@gmail.com','0966987909');
 insert into User(Username, PassWord,Address,Email,PhoneNumber)
 values ('user','123456','Ha Noi','user@gmail.com','0987890543');
+
+select * from User;
+insert into UserRole(User_id, Role_id) value (1,0);

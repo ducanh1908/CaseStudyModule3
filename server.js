@@ -8,12 +8,14 @@ const ErrorController = require("./controller/error-contrller");
 const HomeController = require("./controller/home-controller");
 const SearchController = require("./controller/search-controller");
 const BookshelfController = require("./controller/bookshelf-controller");
+const BookController = require("./controller/book-controller");
 
 let errorController = new ErrorController();
 let userController = new Usercontroller();
 let homeController = new HomeController();
 let search = new SearchController();
 let bookshelfController = new BookshelfController();
+let bookController = new BookController();
 
 const mimeTypes = {
   html: "text/html",
@@ -183,6 +185,43 @@ let server = http.createServer((req, res) => {
       break;
     }
 
+    case "/admin/book": {
+      bookController.showBookListPage(req, res);
+      break;
+    }
+
+    case "/admin/book/create": {
+      if (method === "GET") {
+        bookController.showBookFormCreate(req, res);
+      } else {
+        bookController.createBook(req, res);
+      }
+      break;
+    }
+
+    case "/admin/book/edit": {
+      let query = qs.parse(path.query);
+      let idUpdate = query.id;
+      console.log(idUpdate)
+      if (method === "GET") {
+        bookController.showBookEditForm(req, res, idUpdate);
+      } else {
+        bookController.editBook(req, res, idUpdate);
+      }
+      break;
+    }
+
+    case "/admin/book/delete": {
+      let query = qs.parse(path.query);
+      let idUpdate = query.id;
+      if (method === "GET") {
+        bookController.deleteBook(req, res, idUpdate);
+      } else {
+        bookController.showBookListPage(req, res);
+      }
+      break;
+    }
+
     default:
       const filesDefences = req.url.match(/\.js|\.css|\.png|\.jpg/);
       if (filesDefences) {
@@ -198,6 +237,6 @@ let server = http.createServer((req, res) => {
   }
 });
 
-server.listen(8002, () => {
-  console.log("Server is running http//:localhost:8002");
+server.listen(8005, () => {
+  console.log("Server is running http//:localhost:8005a");
 });

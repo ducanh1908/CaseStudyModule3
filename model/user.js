@@ -119,7 +119,7 @@ class User {
 
        updateUser(id, users) {
         return new Promise((resolve, reject)=>{
-            let querySql = `update User set Username = '${users.username}',Password='${users.password}',Address='${users.address}',DOB ='${users.dob}',Email='${users.email}',PhoneNumber='${users.phone}' where id = ${id};`;
+            let querySql = `update User set Username = '${users.username}',Password='${users.password}',Address='${users.address}',Email='${users.email}',PhoneNumber='${users.phone}' where id = ${id};`;
             this.connection.query(querySql,(err,data)=>{
                 if(err){
                     reject(err)
